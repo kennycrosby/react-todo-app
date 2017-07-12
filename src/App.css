@@ -7,6 +7,7 @@ html {
   background-color: #2D2F52;
   font-family: 'Inconsolata', 'Monaco', monospace;
   color: #d17c78;
+  font-size: 16px;
 }
 
 a {
@@ -155,6 +156,13 @@ h1,h2 {
   padding: 30px 20px;
   margin: 10px 0;
   text-decoration: none;
+
+  border: none;
+  text-align: left;
+  font-family: 'Inconsolata', 'Monaco', monospace;font-size: 1em;
+  color: var(--font-color);
+  cursor: pointer;
+
 }
 
 
@@ -214,7 +222,7 @@ h1,h2 {
 
 
 
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -238,3 +246,4 @@ h1,h2 {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+*/
