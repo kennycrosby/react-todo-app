@@ -58,7 +58,6 @@ export default class FirebaseAPI {
 			createdAt: new Date().getTime(),
 			desc: item.desc || 'Just do it.'
 		}, () => {
-			console.log('callback?');
 			callback();
 		});
 

@@ -6,8 +6,11 @@ import TodoForm       from './components/todo-form.component';
 import TodoList       from './components/todo-list.component';
 import CompletedList  from './components/completed-list.component';
 
+
+import image from './images/maxresdefault.jpg';
 import './App.css';
 
+console.log(image);
 
 // Contaner Component
 class TodoApp extends React.Component{
@@ -35,27 +38,7 @@ class TodoApp extends React.Component{
 				data: todosArr
 			});
 		});
-
 	}
-
-	// animate() {
-
-	// 	let transitionDelay = 0;
-
-	// 	setTimeout( () => {
-
-	// 		let todoItems = document.querySelectorAll('.todo-item');
-
-	// 		for(let i=0; i < todoItems.length; i++) {
-	// 			transitionDelay += .08;
-	// 			todoItems[i].style.transitionDelay = `${transitionDelay}s`;
-	// 			todoItems[i].classList.add('in');
-	// 		}
-
-	// 	}, 1000);
-
-		
-	// }
 	
 	// Add todo handler
 	addTodo(val, desc){
@@ -74,7 +57,6 @@ class TodoApp extends React.Component{
 
 	    // Update app state
 		this.state.data.push(todo);
-		
 	}
 
 	// Mark todo item as completed
@@ -99,7 +81,6 @@ class TodoApp extends React.Component{
 		this.setState({
 			data: updatedItems
 		});
-
 	}
 
 	deleteTodoItem(key) {
@@ -117,11 +98,10 @@ class TodoApp extends React.Component{
 		});
 
 		this.setState({data: remainder});
-		
+	
 	}
 
 	render(){
-
 
 		// Render JSX
 		return (
@@ -143,6 +123,5 @@ class TodoApp extends React.Component{
 		);
 	}
 }
-
 
 export default TodoApp;
