@@ -7,7 +7,7 @@ const TodoList = ({todos, remove}) => {
 	// Map through the todos
 	const todoNode = todos.map((todo) => {
 		if (!todo.completed) {
-			return (<Todo todo={todo} key={todo.key} remove={remove} completed={todo.completed} />);
+			return (<Todo todo={todo} key={todo.key} remove={remove} isCompleted={todo.completed} />);
 		}
 
 		return undefined;
@@ -19,13 +19,26 @@ const TodoList = ({todos, remove}) => {
 		return undefined;
 	});
 
+	const listTitle = (() => {
+		if (toBeCompleted.length > 0) {
+			return (
+				<div className="list-meta">
+					<div className="list-title">To Do</div>
+					<div className="amount">{toBeCompleted.length}</div>
+				</div>
+			);
+		}
+
+		return (<p><small>Add some shit to get done.</small></p>);
+	})();
+
 	return (
-		<div className="thingsToDo">
-			<h1>Things to do ({toBeCompleted.length})</h1>
+		<div className="list-group-container">
+			{listTitle}
 			<CSSTransitionGroup 
 				transitionName="todo-item"
 				transitionEnterTimeout={500}
-				transitionLeaveTimeout={500}
+				transitionLeaveTimeout={300}
 				className="list-group">
 				{todoNode}
 			</CSSTransitionGroup>

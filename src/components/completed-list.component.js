@@ -16,9 +16,24 @@ const CompletedList = ({todos, remove}) => {
 		return undefined;
 	});
 
+	
+	const listTitle = (() => {
+		if (completedTodos.length > 0) {
+			return (
+				<div className="list-meta">
+					<div className="list-title">Done</div>
+					<div className="amount">{completedTodos.length}/{todos.length}</div>
+				</div>
+			);
+		}
+
+		return (<p><small>Finished tasks will display here.</small></p>);
+	})();
+
 	return (
-		<div className="thingsToDo">
-			<h1>Done! ({completedTodos.length})</h1>
+		<div className="list-group-container">
+
+			{listTitle}
 
 			<CSSTransitionGroup 
 				transitionName="todo-item"
