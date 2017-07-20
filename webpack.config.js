@@ -31,28 +31,26 @@ const ExtractTextPluginConfig = new ExtractTextPlugin({
 	    });
 
 
-module.exports = {
-	entry: './src/index.js',
+// Separate out css file for production for caching but use style-loader
+// in development so we can use source maps
+let cssLoader;
+if (process.env.NODE_ENV === 'development') {
+    console.log(':: ===== USING DEVELOPMENT CSS');
 
-	output: {
-		path: path.resolve(__dirname, 'public'),
-		filename: 'bundle.js'
-	},
-
-	devtool: 'eval',
-
-	module: {
-		rules: [
-			{
-				test: /\.(js|jsx)$/,
+    cssLoader = {
+				test: /\.scss$/,
 				use: [
-					"babel-loader",
-					// "eslint-loader",
-		        ],
-				exclude: /node_modules/
-			},
+					{ loader: 'style-loader', options: { sourceMap: true } },
+					{ loader: 'css-loader', options: { sourceMap: true } },
+					{ loader: 'postcss-loader', options: { sourceMap: true } },
+					{ loader: 'sass-loader', options: { sourceMap: true } }
+				]
+	        }
 
-			{
+} else {
+	console.log(':: ===== USING PRODUCTION CSS');
+
+	cssLoader = {
 	            test: /\.scss$/,
 	            use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
@@ -63,7 +61,32 @@ module.exports = {
 						'sass-loader'
 					]
 		        })
-	        },
+	        }
+}
+
+
+module.exports = {
+	entry: './src/index.js',
+
+	output: {
+		path: path.resolve(__dirname, 'public'),
+		filename: 'bundle.js'
+	},
+
+	devtool: 'source-map',
+
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				use: [
+					"babel-loader",
+					// "eslint-loader",
+				],
+				exclude: /node_modules/
+			},
+
+			cssLoader,
 
 	        {
 	        	test: /\.(jpe?g|png|gif|svg)$/i,

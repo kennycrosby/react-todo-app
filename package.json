@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server -d --watch --progress --colors --inline",
-    "build": "webpack --optimize-minimize --define process.env.NODE_ENV=\"'production'\" ",
+    "build": "NODE_ENV=production webpack --optimize-minimize --define process.env.NODE_ENV=\"'production'\" ",
     "test": "jest",
     "lint": "eslint src/*.js"
   },

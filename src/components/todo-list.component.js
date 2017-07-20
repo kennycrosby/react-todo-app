@@ -2,8 +2,6 @@ import React   from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Todo                   from '../components/todo.component';
 
-console.log(CSSTransitionGroup);
-
 const TodoList = ({todos, remove}) => {
 
 	// Map through the todos

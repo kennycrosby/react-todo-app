@@ -6,7 +6,7 @@ To begin the project run:
 
 `yarn build` builds out the production directory in "public"
 
-`yarn start` starts up the webpack dev server for development 
+`yarn start` starts up the webpack dev server for development
 
 
 
