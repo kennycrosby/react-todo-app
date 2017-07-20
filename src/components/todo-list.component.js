@@ -2,21 +2,19 @@ import React   from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Todo                   from '../components/todo.component';
 
+console.log(CSSTransitionGroup);
+
 const TodoList = ({todos, remove}) => {
-	
+
 	// Map through the todos
 	const todoNode = todos.map((todo) => {
 		if (!todo.completed) {
 			return (<Todo todo={todo} key={todo.key} remove={remove} isCompleted={todo.completed} />);
 		}
-
-		return undefined;
 	});
 
 	const toBeCompleted = todos.filter((todo) => {
 		if (todo.completed === false) return todo;
-
-		return undefined;
 	});
 
 	const listTitle = (() => {
@@ -34,14 +32,18 @@ const TodoList = ({todos, remove}) => {
 
 	return (
 		<div className="list-group-container">
+
 			{listTitle}
-			<CSSTransitionGroup 
+
+
+			<CSSTransitionGroup
 				transitionName="todo-item"
 				transitionEnterTimeout={500}
 				transitionLeaveTimeout={300}
 				className="list-group">
 				{todoNode}
 			</CSSTransitionGroup>
+
 		</div>
 	);
 }

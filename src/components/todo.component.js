@@ -1,13 +1,13 @@
 import React      from 'react';
-import iconCheck      from '../images/check.svg';
-import iconDelete      from '../images/delete.svg';
+import iconCheck      from '../assets/images/check.svg';
+import iconDelete      from '../assets/images/delete.svg';
 
 const Todo = ({todo, remove, completed}) => {
 
 	const todoItem = () => {
 		if (completed) {
 			return (
-				
+
 				<button className="todo-item completed" onClick={() => { remove(todo.key); } }>
 					<div className="bg-container">
 						<div className="checkbox">
@@ -22,7 +22,7 @@ const Todo = ({todo, remove, completed}) => {
 
 			);
 		}
-		
+
 		return (
 			<button className="todo-item" onClick={() => { remove(todo.key); } }>
 				<div className="bg-container">
@@ -35,10 +35,10 @@ const Todo = ({todo, remove, completed}) => {
 				</div>
 			</button>
 		);
-	}
+	};
 
 	// Each Todo
 	return todoItem();
-}
+};
 
 export default Todo;

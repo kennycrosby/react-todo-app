@@ -6,17 +6,13 @@ const CompletedList = ({todos, remove}) => {
 	// Map through the todos
 	const todoNode = todos.map((todo) => {
 		if (todo.completed) return (<Todo todo={todo} key={todo.key} remove={remove} completed={todo.completed} />);
-
-		return undefined;
 	});
 
 	const completedTodos = todos.filter((todo) => {
 		if (todo.completed === true) return todo;
-
-		return undefined;
 	});
 
-	
+
 	const listTitle = (() => {
 		if (completedTodos.length > 0) {
 			return (
@@ -35,7 +31,7 @@ const CompletedList = ({todos, remove}) => {
 
 			{listTitle}
 
-			<CSSTransitionGroup 
+			<CSSTransitionGroup
 				transitionName="todo-item"
 				transitionEnterTimeout={300}
 				transitionLeaveTimeout={300}
@@ -45,6 +41,6 @@ const CompletedList = ({todos, remove}) => {
 
 		</div>
 	);
-}
+};
 
 export default CompletedList;

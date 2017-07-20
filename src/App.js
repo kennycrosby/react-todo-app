@@ -1,20 +1,15 @@
 import React, { Component }      from 'react';
 import FirebaseAPI               from './api-firebase';
 
-// Components 
+// Components
 import TodoForm       from './components/todo-form.component';
 import TodoList       from './components/todo-list.component';
 import CompletedList  from './components/completed-list.component';
 
-
-import image from './images/maxresdefault.jpg';
-import './App.css';
-
-console.log(image);
-
 // Contaner Component
-class TodoApp extends React.Component{
-	constructor(props){
+class TodoApp extends React.Component {
+
+	constructor(props) {
 
 		// Pass props to parent class
 		super(props);
@@ -24,13 +19,13 @@ class TodoApp extends React.Component{
 			data: [],
 			todoitems: [],
 			completeditems: []
-		}
+		};
 
 		this.firebaseAPI = new FirebaseAPI();
 
 	}
-	
-	componentDidMount(){
+
+	componentDidMount() {
 
 		this.firebaseAPI.getTodos( (todosArr) => {
 
@@ -39,34 +34,34 @@ class TodoApp extends React.Component{
 			});
 		});
 	}
-	
+
 	// Add todo handler
-	addTodo(val, desc){
-		
+	addTodo(val, desc) {
+
 		// Assemble data
 		const todo = {
 			text: val,
 			createdAt: new Date().getTime(),
 			completed: false,
 			desc: desc || 'Just do it.'
-		}
+		};
 
 		this.firebaseAPI.addTodo(todo, () => {
-	    	// callback
-	    });
+			// callback
+		});
 
-	    // Update app state
+		// Update app state
 		this.state.data.push(todo);
 	}
 
 	// Mark todo item as completed
-	markCompleted(key){
+	markCompleted(key) {
 
 		let item = {};
 
 		const updatedItems = this.state.data.filter((todo) => {
-		
-			if(todo.key === key) {
+
+			if (todo.key === key) {
 				item = todo;
 				todo.completed = true;
 			}
@@ -92,30 +87,28 @@ class TodoApp extends React.Component{
 
 		// Filter all todos except the one to be removed
 		const remainder = this.state.data.filter((todo) => {
-			if(todo.key !== key) return todo;
-
-			return undefined;
+			if (todo.key !== key) return todo;
 		});
 
 		this.setState({data: remainder});
-	
+
 	}
 
-	render(){
+	render() {
 
 		// Render JSX
 		return (
 			<div>
-				
+
 				<TodoForm addTodo={this.addTodo.bind(this)}/>
-				
-				<TodoList 
-					todos={this.state.data} 
+
+				<TodoList
+					todos={this.state.data}
 					remove={this.markCompleted.bind(this)}
 				/>
-				
+
 				<CompletedList
-					todos={this.state.data} 
+					todos={this.state.data}
 					remove={this.deleteTodoItem.bind(this)}
 				/>
 

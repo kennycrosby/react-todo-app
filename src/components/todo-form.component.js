@@ -1,9 +1,5 @@
 import React      from 'react';
-import arrow from '../images/arr.svg';
-
-
-
-
+import arrow from '../assets/images/arr.svg';
 
 const TodoForm = ({addTodo}) => {
 	// Input tracker
@@ -14,10 +10,10 @@ const TodoForm = ({addTodo}) => {
 			<form className="add-todos" onSubmit={
 					(e) => {
 						e.preventDefault();
-						
+
 						if (input.value.length > 0) {
 							addTodo(input.value);
-							input.value = '';	
+							input.value = '';
 						}
 					}
 				}>
@@ -29,7 +25,7 @@ const TodoForm = ({addTodo}) => {
 				</button>
 
 				<img className="arrow" src={arrow} />
-				
+
 			</form>
 			<div className="add-todos-prompt">Hit enter to add.</div>
 		</div>

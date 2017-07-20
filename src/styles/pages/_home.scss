@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+
 * {
   box-sizing: border-box;
 }
@@ -59,12 +64,12 @@ html {
   /*opacity: .97;*/
 }
 
-.bg-main-image {
-  background-image: url('/static/media/maxresdefault.89eb6134.jpg');
-  background-size: cover;
-  z-index: -1;
-  filter: blur(4px);
-}
+// .bg-main-image {
+//   background-image: url('/static/media/maxresdefault.89eb6134.jpg');
+//   background-size: cover;
+//   z-index: -1;
+//   filter: blur(4px);
+// }
 
 
 
@@ -139,6 +144,7 @@ small {
   padding-left: 15px;
   padding-right: 15px;
   position: relative;
+  overflow: hidden;
 }
 
 .add-todos-container {
@@ -234,8 +240,8 @@ small {
 
 .list-group {
     display: block;
-    perspective: 1000;
-    -webkit-perspective: 1000;
+    perspective: 100;
+    -webkit-perspective: 100;
 }
 
 .list-meta .list-title {
@@ -346,7 +352,7 @@ small {
 
 .todo-item:hover,
 .todo-item:focus {
-  transform: translate3d(0,10px,20px);
+  transform: translate3d(0,-2px,8px);
   transition-property: opacity, transform;
   opacity: 1;
 }
@@ -397,7 +403,7 @@ small {
 
 .todo-item:hover .title,
 .todo-item:focus .title {
-  transform: translate3d(10px, 0, 0);
+  transform: translate3d(15px, 0, 0);
 }
 
 
@@ -441,7 +447,6 @@ small {
 
 .todo-item-container-enter {
   height: 0;
-
   transform: translate3d(100px,0,-640px) rotateY(-20deg);
   
   /*transform: rotateY(-90deg);*/
@@ -467,45 +472,3 @@ small {
   transition-duration: .3s;
   transition-timing-function: ease-in;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-*/
