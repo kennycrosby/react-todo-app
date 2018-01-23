@@ -38,14 +38,14 @@ if (process.env.NODE_ENV === 'development') {
     console.log(':: ===== USING DEVELOPMENT CSS');
 
     cssLoader = {
-				test: /\.scss$/,
-				use: [
-					{ loader: 'style-loader', options: { sourceMap: true } },
-					{ loader: 'css-loader', options: { sourceMap: true } },
-					{ loader: 'postcss-loader', options: { sourceMap: true } },
-					{ loader: 'sass-loader', options: { sourceMap: true } }
-				]
-	        }
+			test: /\.scss$/,
+			use: [
+				{ loader: 'style-loader', options: { sourceMap: true } },
+				{ loader: 'css-loader', options: { sourceMap: true } },
+				{ loader: 'postcss-loader', options: { sourceMap: true } },
+				{ loader: 'sass-loader', options: { sourceMap: true } }
+			]
+    }
 
 } else {
 	console.log(':: ===== USING PRODUCTION CSS');
